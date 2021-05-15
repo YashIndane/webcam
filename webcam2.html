@@ -1,0 +1,36 @@
+<html>
+     <head>
+         <meta charset="utf-8" />
+         <title>Webcam</title>
+         <style>
+             #videoElement {
+               border: 30px solid #ccc;
+               background: green;
+               width: 400px;
+               height: 400px
+              }
+         </style>
+     </head>
+     <body>
+       <button>Start camera</button>
+           <br/>
+           <video autoplay="true" id="videoElement"></video>
+
+           <script type="text/javascript">
+                var video = document.querySelector("#videoElement");
+                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUsermedia 
+                    || navigator.mozGetUserMedia || navigato.msGetUserMedia || navigator.oGetUserMedia;
+
+                    if(navigator.getUserMedia){
+                      navigator.getUserMedia({video:true}, handleVideo, videoError)      
+                    }
+
+                    function handleVideo(stream){
+                    video.srcObject = stream;
+                    video.play();
+                    }
+
+                    function videoError(e){}
+           </script> 
+     </body>
+</html>
